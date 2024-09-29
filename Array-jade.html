@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Methods</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #030303;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .box {
+            background-color: #353434;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .box h2 {
+            margin-top: 0;
+            color: #ffcc00;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #990707;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e68a00;
+        }
+
+        pre {
+            background-color: #2e2d2d;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            color: #069229;
+        }
+
+        code {
+            color: #ecbe06;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Array Methods</h1>
+
+    <div class="container">
+        <div class="box">
+            <h2>Array length</h2>
+            <p>The length property returns the length (size) of an array:</p>
+            <p><strong>Example:</strong> <code>array.length</code></p>
+            <button onclick="showLength()">Try it</button>
+            <pre id="lengthExample"></pre>
+        </div>
+
+        <div class="box">
+            <h2>Array toString()</h2>
+            <p>The JavaScript method toString() converts an array to a string of (comma separated) array values.</p>
+            <p><strong>Example:</strong> <code>array.toString()</code></p>
+            <button onclick="showToString()">Try it</button>
+            <pre id="toStringExample"></pre>
+        </div>
+
+        <div class="box">
+            <h2>Array at()</h2>
+            <p>ES2022 intoduced the array method at():</p>
+            <p><strong>Example:</strong> <code>array.at(index)</code></p>
+            <button onclick="showAt()">Try it</button>
+            <pre id="atExample"></pre>
+        </div>
+
+        <div class="box">
+            <h2>Array join()</h2>
+            <p>The join() method also joins all array elements into a string.</p>
+            <p><strong>Example:</strong> <code>array.join(separator)</code></p>
+            <button onclick="showJoin()">Try it</button>
+            <pre id="joinExample"></pre>
+        </div>
+
+        <div class="box">
+            <h2>Array pop()</h2>
+            <p>The pop() method removes the last element from an array:</p>
+            <p><strong>Example:</strong> <code>array.pop()</code></p>
+            <button onclick="showPop()">Try it</button>
+            <pre id="popExample"></pre>
+        </div>
+
+        <div class="box">
+            <h2>Array push()</h2>
+            <p>The push() method adds a new element to an array (at the end):</p>
+            <p><strong>Example:</strong> <code>array.push(element)</code></p>
+            <button onclick="showPush()">Try it</button>
+            <pre id="pushExample"></pre>
+        </div>
+
+        <div class="box">
+            <h2>Array shift()</h2>
+            <p>The shift() method removes the first array element and "shifts" all other elements to a lower index.</p>
+            <p><strong>Example:</strong> <code>array.shift()</code></p>
+            <button onclick="showShift()">Try it</button>
+            <pre id="shiftExample"></pre>
+        </div>
+
+        <div class="box">
+            <h2>Array unshift()</h2>
+            <p>The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements:</p>
+            <p><strong>Example:</strong> <code>array.unshift(element)</code></p>
+            <button onclick="showUnshift()">Try it</button>
+            <pre id="unshiftExample"></pre>
+        </div>
+        <div class="box">
+            <h2>Array delete</h2>
+            <p>Warning ! Using delete() leaves undefined holes in the array.</p>
+            <p><strong>Example:</strong> <code>delete array[index]</code></p>
+            <button onclick="showDelete()">Try it</button>
+            <pre id="deleteExample"></pre>
+        </div>
+
+        <div class="box">
+            <h2>Array concat()</h2>
+            <p>The concat() method creates a new array by merging (concatenating) existing arrays:</p>
+            <p><strong>Example:</strong> <code>array1.concat(array2)</code></p>
+            <button onclick="showConcat()">Try it</button>
+            <pre id="concatExample"></pre>
+        </div>
+
+        <div class="box">
+            <h2>Array copyWithin()</h2>
+            <p>The copyWithin() method copies array elements to another position in an array:</p>
+            <p><strong>Example:</strong> <code>array.copyWithin(target, start, end)</code></p>
+            <button onclick="showCopyWithin()">Try it</button>
+            <pre id="copyWithinExample"></pre>
+        </div>
+
+        <div class="box">
+            <h2>Array flat()</h2>
+            <p>The flat() method creates a new array with sub-array elements concatenated to a specified depth.</p>
+            <p><strong>Example:</strong> <code>array.flat(depth)</code></p>
+            <button onclick="showFlat()">Try it</button>
+            <pre id="flatExample"></pre>
+        </div>
+
+        <div class="box">
+            <h2>Array splice()</h2>
+            <p>The splice() method can be used to add new items to an array:</p>
+            <p><strong>Example:</strong> <code>array.splice(start, deleteCount, item1, item2, ...)</code></p>
+            <button onclick="showSplice()">Try it</button>
+            <pre id="spliceExample"></pre>
+        </div>
+
+        <div class="box">
+            <h2>Array toSpliced()</h2>
+            <p>ES2023 added the Array toSpliced() method as a safe way to splice an array without altering the original array.</p>
+            <p><strong>Example:</strong> <code>array.toSpliced(start, deleteCount, item1, item2, ...)</code></p>
+            <button onclick="showToSpliced()">Try it</button>
+            <pre id="toSplicedExample"></pre>
+        </div>
+
+        <div class="box">
+            <h2>Array slice()</h2>
+            <p>The slice() method slices out a piece of an array into a new array:</p>
+            <p><strong>Example:</strong> <code>array.slice(start, end)</code></p>
+            <button onclick="showSlice()">Try it</button>
+            <pre id="sliceExample"></pre>
+        </div>
+    </div>
+
+    </div>
+
+    <script>
+        const sampleArray = ["Banana", "Orange", "Apple", "Mango"];
+        
+        // Array Method Length
+        function showLength() {
+            document.getElementById("lengthExample").innerText = sampleArray.length;
+        }
+
+        // Array Method ToString
+        function showToString() {
+            document.getElementById("toStringExample").innerText = sampleArray.toString();
+        }
+
+        // Array Method At
+        function showAt() {
+            document.getElementById("atExample").innerText = sampleArray.at(2); // returns element at index 2
+        }
+
+        // Array Method Join
+        function showJoin() {
+            document.getElementById("joinExample").innerText = sampleArray.join(" - ");
+        }
+
+        // Array Method Pop
+        function showPop() {
+            const arr = [...sampleArray];
+            arr.pop();
+            document.getElementById("popExample").innerText = arr.toString();
+        }
+
+        // Array Method Push
+        function showPush() {
+            const arr = [...sampleArray];
+            arr.push("Pineapple");
+            document.getElementById("pushExample").innerText = arr.toString();
+        }
+
+        // Array Method Shift
+        function showShift() {
+            const arr = [...sampleArray];
+            arr.shift();
+            document.getElementById("shiftExample").innerText = arr.toString();
+        }
+
+        // Array Method Unshift
+        function showUnshift() {
+            const arr = [...sampleArray];
+            arr.unshift("Strawberry");
+            document.getElementById("unshiftExample").innerText = arr.toString();
+        }
+         // Array Method Delete
+         function showDelete() {
+            const arr = [...sampleArray];
+            delete arr[1]; // Delete element sa index 1
+            document.getElementById("deleteExample").innerText = arr.join(", ");
+        }
+
+        // Array Method Concat
+        function showConcat() {
+            const myGirls = ["Cecilie", "Lone"];
+            const myBoys = ["Emil", "Tobias", "Linus"];
+            const myChildren = myGirls.concat(myBoys);
+            const result = array1.concat(array2);
+            document.getElementById("concatExample").innerHTML = result.toString();
+        }
+
+        // Array Method CopyWithin
+        function showCopyWithin() {
+            const arr = [...sampleArray];
+            arr.copyWithin(2, 0, 2); // Copy elements from index 0 to 2 to index 2
+            document.getElementById("copyWithinExample").innerText = arr.toString();
+        }
+
+        // Array Method Flat
+        function showFlat() {
+            const nestedArray = [1, [2, 3], [4, [5, 6]]];
+            document.getElementById("flatExample").innerText = nestedArray.flat(2).toString();
+        }
+
+        // Array Method Splice
+        function showSplice() {
+            const arr = [...sampleArray];
+            arr.splice(2, 1, "Kiwi", "Pineapple"); // Remove 1 element at index 2 and add two new ones
+            document.getElementById("spliceExample").innerText = arr.toString();
+        }
+
+        // Array Method toSpliced
+        function showToSpliced() {
+            const arr = [...sampleArray];
+            const newArr = arr.toSpliced(1, 2, "Papaya");
+            document.getElementById("toSplicedExample").innerText = newArr.toString();
+        }
+
+        // Array Method Slice
+        function showSlice() {
+            const arr = [...sampleArray];
+            const sliced = arr.slice(1, 3); // Slice elements from index 1 to 3 (not inclusive)
+            document.getElementById("sliceExample").innerText = sliced.toString();
+        }
+    </script>
+
+</body>
+</html>
